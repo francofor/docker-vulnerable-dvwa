@@ -22,7 +22,7 @@ sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard
    }
    stage("Create app") {
        steps {
-//           sh "cd /var/lib/jenkins/workspace/pec4_2; docker build ."
+//           sh "cd /var/lib/jenkins/workspace/pec4; docker build ."
            sleep 1
        }
    }
