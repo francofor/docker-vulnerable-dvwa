@@ -15,7 +15,7 @@ sh '''cd /home/franco/wap; java -jar wap.jar -a -s -all -p ${WORKSPACE}
    }
    stage("Second Code Analysis") {
        steps {
-sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml ${WORKSPACE}
+sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml ${WORKSPACE}/dvwa\tmp.php
 '''
        }
    }
