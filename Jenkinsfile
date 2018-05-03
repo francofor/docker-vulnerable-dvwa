@@ -21,12 +21,12 @@ sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard
    }
    stage("Create App") {
        steps {
-           sh "cd /var/lib/jenkins/workspace/pec4; docker build -t pec4Image ."
+           sh "cd /var/lib/jenkins/workspace/pec4; docker build -t pec4image ."
        }
    }
    stage("Start App") {
     steps {
-      sh "docker run -d -p 8080:80 pec4Image"
+      sh "docker run -d -p 8080:80 pec4image"
     }
    }
  } 
