@@ -30,3 +30,4 @@ sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard
     }
    }
  } 
+}
