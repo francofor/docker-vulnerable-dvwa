@@ -4,7 +4,7 @@ pipeline {
  stages {
    stage("Preparation") { 
      steps {
-       git 'https://github.com/francofor/docker-vulnerable-dvwa'
+       sleep 1
      }
    }
    stage("First Code Analysis") {
@@ -15,7 +15,7 @@ sh '''cd /home/franco/wap; java -jar wap.jar -a -s -all -p ${WORKSPACE}
    }
    stage("Second Code Analysis") {
        steps {
-sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml ${WORKSPACE}/dvwa/tmp.php
+sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml ${WORKSPACE}
 '''
        }
    }
@@ -30,4 +30,12 @@ sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard
     }
    }
  } 
+
+ post {
+    always {
+        mail to: 'francofor69@gmail.com',
+        subject: "Jenkins job executed: ${currentBuild.fullDisplayName}",
+        body: "Executed, please check ${env.BUILD_URL}"
+    }
+ }
 }
