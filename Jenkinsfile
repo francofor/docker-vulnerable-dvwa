@@ -15,7 +15,7 @@ sh '''cd /home/franco/wap; java -jar wap.jar -a -s -all -p /var/lib/jenkins/work
    }
    stage("Second Code Analysis") {
        steps {
-sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml /var/lib/jenkins/workspace/pec4/dvwa/index.php
+sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml /var/lib/jenkins/workspace/pec4/dvwa/tmp.php
 '''
        }
    }
