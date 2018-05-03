@@ -9,13 +9,13 @@ pipeline {
    }
    stage("First Code Analysis") {
        steps {
-sh '''cd /home/franco/wap; java -jar wap.jar -a -s -all -p /var/lib/jenkins/workspace/pec4/dvwa/
+sh '''cd /home/franco/wap; java -jar wap.jar -a -s -all -p ${WORKSPACE}
 '''
        }
    }
    stage("Second Code Analysis") {
        steps {
-sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml /var/lib/jenkins/workspace/pec4/dvwa/tmp.php
+sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard=example_base_ruleset.xml ${WORKSPACE}
 '''
        }
    }
@@ -30,12 +30,3 @@ sh '''cd /home/franco/phpcs-security-audit-master; ./vendor/bin/phpcs --standard
     }
    }
  } 
-
- post {
-    always {
-        mail to: 'francofor69@gmail.com',
-        subject: "Jenkins job executed: ${currentBuild.fullDisplayName}",
-        body: "Executed, please check ${env.BUILD_URL}"
-    }
- }
-}
